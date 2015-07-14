@@ -1,0 +1,13 @@
+{
+  "title": "Run Js Here",
+  "name": "runjshere",
+  "version": "0.0.1",
+  "description": "Run JavaScript commands on any page",
+  "main": "index.js",
+  "author": "Ebob",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "MIT"
+}
