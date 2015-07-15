@@ -57,7 +57,7 @@ function updateButtons(){
     stored_funcs = [];
     stored_labels = [];
   }
-  panel.port.emit("updateButtons", stored_labels);
+  panel.port.emit("updateButtons", stored_funcs, stored_labels);
 }
 
 
@@ -72,12 +72,33 @@ panel.port.on("panel-button-click", function(idx){
   });
 });
 
-panel.port.on("add-clicked", function (func, label) {
+panel.port.on("save-clicked", function (func, label, idx) {
   if ("undefined" == typeof(ss.storage.functions)){
     ss.storage.functions = [];
     ss.storage.labels = [];
   }
-  ss.storage.functions[ss.storage.functions.length] = func;
-  ss.storage.labels[ss.storage.labels.length] = label;
+  var i = ss.storage.functions.length;
+  if(idx != ""){
+    i = idx;
+  }
+  ss.storage.functions[i] = func;
+  ss.storage.labels[i] = label;
+  updateButtons();
+});
+
+panel.port.on("del-clicked", function (idx) {
+  if(idx == ""){
+    return;
+  }
+  var newFunctions = [];
+  var newLabels = [];
+  for(var i=0; i<ss.storage.functions.length; i++){
+    if(i != idx){
+      newFunctions[newFunctions.length] = ss.storage.functions[i];
+      newLabels[newLabels.length] = ss.storage.labels[i];
+    }
+  }
+  ss.storage.functions = newFunctions;
+  ss.storage.labels = newLabels;
   updateButtons();
 });

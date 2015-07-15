@@ -4,18 +4,24 @@
       textarea {
         margin: 10px;
       }
+      a.editButtons{
+        display: none;
+      }
     </style>
   </head>
 <body>
   <div id="buttons">
-    <div id="buttons-area"></div>
+    <div id="buttons-area" style="border-bottom: 1px solid black"></div>
     <input type="button" value="Add" id="show-add" />
+    <input type="button" value="Edit" id="show-edit" />
   </div>
   <div id="addarea" style="display:none">
     Label: <input type="text" id="label" />
-    <textarea rows="10" cols="25" id="edit-box"></textarea>
+    <textarea rows="9" cols="25" id="edit-box"></textarea>
+    <input type="hidden" value="" id="idx-edit" />
     <input type="button" value="Cancel" id="cancel-button" />
-    <input type="button" value="Add" id="add-button" />
+    <input type="button" value="Del" id="del-button" style="display:none"/>
+    <input type="button" value="Save" id="save-button" />
   </div>
   </body>
 </html>
